@@ -5,5 +5,5 @@ WORKDIR /build
 COPY . .
 
 EXPOSE 8080
-
-ENTRYPOINT ["go","build"]
+RUN go build
+ENTRYPOINT ["./GoViolin"]
