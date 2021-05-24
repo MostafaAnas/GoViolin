@@ -1,10 +1,7 @@
-FROM golang
+FROM golang:1.16.4-alpine
 
-WORKDIR /root/app
-
-
+RUN mkdir /build
+WORKDIR /build
 COPY . .
 
-EXPOSE 8080
-
-ENTRYPOINT ["go","run","main.go","scale.go","home.go","duet.go"]
+ENTRYPOINT ["go","build"]
