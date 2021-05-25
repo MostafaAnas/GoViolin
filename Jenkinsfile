@@ -1,21 +1,20 @@
 pipeline {
-    environment {
+  environment {
     registry = "mostafahelal/GoViolion"
     registryCredential = 'DockerHub-Creds'
     dockerImage = ''
   }
 
-    agent any
+  agent any
 
-    stages {
-        stage('SCM checkout') {
-            steps {
-                git 'https://github.com/MostafaAnas/GoViolin'
-            }
-        }
+  stages {
+    stage('SCM checkout') {
+      steps {
+        git 'https://github.com/MostafaAnas/GoViolin'
+      }
     }
     stage('Building image') {
-      steps{
+      steps {
         script {
           dockerImage = docker.build registry + ":latest"
         }
@@ -23,12 +22,14 @@ pipeline {
     }
 
     stage('Deploy Image') {
-      steps{
+      steps {
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry('', registryCredential) {
             dockerImage.push()
           }
         }
       }
     }
+  }
+
 }
