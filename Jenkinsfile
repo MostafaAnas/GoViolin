@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "mostafahelal/GoViolion"
+    registry = "mostafahelal/goviolion"
     registryCredential = 'DockerHub-Creds'
     dockerImage = ''
   }
